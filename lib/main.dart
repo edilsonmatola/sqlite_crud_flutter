@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Sqflite',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.cyanAccent[900],
-        )
-      ),
+          appBarTheme: AppBarTheme(
+        backgroundColor: Colors.cyanAccent[900],
+      )),
       home: const MyHomePage(title: 'Flutter Sqflite'),
       debugShowCheckedModeBanner: false,
     );
@@ -93,10 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 10,
             ),
             TextField(
+              controller: _descriptionController,
               keyboardType: TextInputType.multiline,
               minLines: 1,
               maxLines: null,
-              controller: _descriptionController,
               decoration: const InputDecoration(
                 hintText: 'Description',
               ),
@@ -122,7 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 // Close the bottom sheet
                 Navigator.of(context).pop();
               },
-              child: Text(id == null ? 'Create New' : 'Update'),
+              child: Text(
+                id == null ? 'Create New' : 'Update',
+              ),
             )
           ],
         ),
@@ -153,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Delete an item
   // TODO: Adicionar o desmissible e action undo do redo the deleted action.
-   Future<void> _deleteItem(int id) async {
+  Future<void> _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
