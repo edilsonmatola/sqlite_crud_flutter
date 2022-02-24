@@ -72,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _descriptionController.text = existingJournal['description'] as String;
     }
 
+// TODO: Change the modal to be able to see while typing the fields
     await showModalBottomSheet(
       context: context,
       elevation: 5,
